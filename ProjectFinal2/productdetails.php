@@ -34,6 +34,9 @@ if (!$row) {
     header("Location: error.php?m=$error");
     die();
 }
+
+
+
 ?>
 
 <section class="main-section section-padding">
@@ -46,7 +49,19 @@ if (!$row) {
             <li class="page-navsli page-nav">Product Details</li>
         </ul>
     </div>
+    <?php
+    if(isset($_GET['cart'])){
+        if (array_key_exists($id, $cartArray)) {
+            $cartArray[$id] = $cartArray[$id] + 1;
+        } else {
+            $cartArray[$id] = 1;
+        }
 
+        $_SESSION['cart'] = $cartArray;
+        echo '<h2 style="color: #0ca845;">Item successfully added to cart</h2>';
+
+    }
+    ?>
     <h2><?= $row['title_name'] ?></h2>
 
     <div class="productdetails">
@@ -78,9 +93,10 @@ if (!$row) {
     ?>
 
 
-    <form action="addproduct.php" method="get">
+    <form action="productDetails.php" method="get">
+        <input type="hidden" name="id" value="<?php print $row['id'];?>">
         <div class="deal-button">
-            <button type="submit" value="Add" class="site-button">Add to Cart</button>
+            <button type="submit" value="Add" class="site-button" name="cart">Add to Cart</button>
         </div>
     </form>
 

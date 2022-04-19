@@ -1,3 +1,17 @@
+<?php
+session_start();
+
+if(isset($_POST['clear'])){
+    unset($_SESSION['cart']);
+    $cartCount = 0;
+}
+
+if (isset($_SESSION['cart'])) {
+    $cartArray = $_SESSION['cart'];
+} else {
+    $cartArray = array();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -69,7 +83,15 @@
                     </div>
                     <!--Cart-->
                     <div class="dropdown" class="navs">
-                        <li class="dropbtn"><a class="fa-solid fa-cart-shopping" href="cart.php"></a></li>
+                        <li class="dropbtn"><a class="fa-solid fa-cart-shopping" href="cart.php"></a>
+                            <?php
+                                if(!empty($cartArray)) {
+                                    $cartCount = array_sum($cartArray);
+                                    echo "(" . $cartCount . ")";
+                                }
+                            ?>
+
+                        </li>
                     </div>
                     <!--Search bar-->
                     <ul class="navs" class="nav">

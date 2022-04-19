@@ -102,7 +102,7 @@ if (!$row) {
                         <!--Board Games section-->
                         <div class="swiper-slide">
                             <div class="box-text">
-                                <h4 style="font-size: 25px; text-align: center; color: black;">Board Games</h2>
+                                <h4 style="font-size: 25px; text-align: center; color: black;">Board Games</h4>
                             </div>
                             <div class="box">
                                 <a href='boards.php'><img
