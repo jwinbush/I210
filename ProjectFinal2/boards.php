@@ -5,8 +5,7 @@ require_once('includes/header.php');
 
 $sql = "SELECT *
 FROM products 
-WHERE category_id = 3
-ORDER BY title_name ASC";
+WHERE category_id = 3";
 
 $query = $conn->query($sql);
 
@@ -40,44 +39,58 @@ if (!$row) {
         <div class="product-section">
             <div class="product-side-bar">
                 <ul class="side-bars">
-                    <li class="single-bar"><a href="" class="bar-link"><span class="bar-text">Price</span><span class="bar-icon">+</span></a></li>
-                    <li class="single-bar"><a href="" class="bar-link"><span class="bar-text">Platforms</span><span class="bar-icon">+</span></a></li>
-                    <li class="single-bar"><a href="" class="bar-link"><span class="bar-text">Availability</span><span class="bar-icon">+</span></a></li>
-                    <li class="single-bar"><a href="" class="bar-link"><span class="bar-text">Product Type</span><span class="bar-icon">+</span></a></li>
-                    <li class="single-bar"><a href="" class="bar-link"><span class="bar-text">ESRB</span><span class="bar-icon">+</span></a></li>
-                    <li class="single-bar"><a href="" class="bar-link"><span class="bar-text">Players</span><span class="bar-icon">+</span></a></li>
-                    <li class="single-bar"><a href="" class="bar-link"><span class="bar-text">Review Stars</span><span class="bar-icon">+</span></a></li>
-                    <li class="single-bar"><a href="" class="bar-link"><span class="bar-text">Genre</span><span class="bar-icon">+</span></a></li>
-                    <li class="single-bar"><a href="" class="bar-link"><span class="bar-text">Condition</span><span class="bar-icon">+</span></a></li>
+                    <li class="single-bar"><a href="" class="bar-link"><span class="bar-text">Price</span><span
+                                class="bar-icon">+</span></a></li>
+                    <li class="single-bar"><a href="" class="bar-link"><span class="bar-text">Platforms</span><span
+                                class="bar-icon">+</span></a></li>
+                    <li class="single-bar"><a href="" class="bar-link"><span class="bar-text">Availability</span><span
+                                class="bar-icon">+</span></a></li>
+                    <li class="single-bar"><a href="" class="bar-link"><span class="bar-text">Product Type</span><span
+                                class="bar-icon">+</span></a></li>
+                    <li class="single-bar"><a href="" class="bar-link"><span class="bar-text">ESRB</span><span
+                                class="bar-icon">+</span></a></li>
+                    <li class="single-bar"><a href="" class="bar-link"><span class="bar-text">Players</span><span
+                                class="bar-icon">+</span></a></li>
+                    <li class="single-bar"><a href="" class="bar-link"><span class="bar-text">Review Stars</span><span
+                                class="bar-icon">+</span></a></li>
+                    <li class="single-bar"><a href="" class="bar-link"><span class="bar-text">Genre</span><span
+                                class="bar-icon">+</span></a></li>
+                    <li class="single-bar"><a href="" class="bar-link"><span class="bar-text">Condition</span><span
+                                class="bar-icon">+</span></a></li>
                 </ul>
             </div>
-            <?php
-            while ($row = $query->fetch_assoc()) {
-                echo "<div class='all-deals'>";
-                echo "<div class='dealone' class='single-deal'>";
-                echo "<div class='deal-outer'>";
-                echo "<div class='deal-image'>";
-                echo "<a href='productdetails.php?id=", $row['id'], "'> <img src='$row[image]' height='230' /></a>";
-                echo "<br>";
-                echo "<div class='deal-title'>";
-                echo "<p>", $row['title_name'], "</p>";
-                echo "<p>Platform: ", $row['publisher'], "</p>";
-                echo "<p>", $row['product_category'], "</p>";
-                echo "</div>";
-                echo "<div class='deal-price'>";
-                echo "<span>$", $row['final_price'], "</span>";
-                echo "</div>";
-                echo "<div class='deal-stars'>";
-                echo "</div>";
-                echo "<div class='deal-review'>";
-                echo "</div>";
-                echo "</div>";
-                echo "</div>";
-                echo "</div>";
-            }
-            ?>
+            <section class="new container" id="new">
+                <!--Content-->
+                <div class="new-content">
+                    <!--Box 1-->
+
+                    <?php
+                    while ($row = $query->fetch_assoc()) {
+                        echo "<section class='new container' id='new'>";
+                        echo "<div class='class='new-content'>";
+                        echo "<div class='box'>";
+                        echo "<div class='deal-image'>";
+                        echo "<a href='productdetails.php?id=", $row['id'], "'> <img src='$row[image]' /></a>";
+                        echo "<br>";
+                        echo "<div class='box-text'>";
+                        echo "<h2>", $row['title_name'], "</h2>";
+                        echo "<h2>Publisher: ", $row['publisher'], "</h2>";
+                        echo "<h3>", $row['product_category'], "</h3>";
+                        echo "<h3>$", $row['final_price'], "</h3>";
+                        echo "</div>";
+                        echo "<div>";
+                        echo "</div>";
+                        echo "<div class='deal-review'>";
+                        echo "</div>";
+                        echo "</div>";
+                        echo "</div>";
+                        echo "</div>";
+                        echo "</section>";
+                    }
+                    ?>
+                </div>
+
         </div>
-    </div>
 </section>
 <?php
 require_once('includes/footer.php');
