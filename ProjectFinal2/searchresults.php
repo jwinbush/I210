@@ -3,69 +3,116 @@ require_once('includes/database.php');
 require_once('includes/header.php');
 
 //retrieve search term
-if (!filter_has_var(INPUT_GET, "q")) {
-    $error = "There was no search terms found.";
-    $conn->close();
-    header("Location: error.php?m=$error");
-    die();
+if (filter_has_var(INPUT_GET, "terms")) {
+    $terms_str = filter_input(INPUT_GET, 'terms', FILTER_SANITIZE_STRING);
+} else {
+    echo "There was not search terms found.";
+    include('includes/footer.php');
+    exit;
 }
-$term = filter_input(INPUT_GET, 'q', FILTER_SANITIZE_STRING);
 
+$terms = explode(" ", $terms_str);
 //explode the search terms into an array
-$terms = explode(" ", $term);
 
-$sql = "SELECT id, title, publisher, price, platform
-FROM $tblGames, $tblPlatform
-WHERE $tblGames.platform_id = $tblPlatform.platform_id AND ";
-foreach ($terms as $t) {
-    $sql .= "title LIKE '%$t%' AND ";
+$sql = "SELECT * FROM products WHERE 1";
+foreach ($terms as $term) {
+    $sql .= " AND title_name LIKE '%$term%'";
 }
-$sql = rtrim($sql, "AND ");
 
 $query = $conn->query($sql);
 
 if (!$query) {
-    $error = "Selection failed: " . $conn->error;
+    $errno = $conn->errno;
+    $errmsg = $conn->error;
+    echo "Selection failed with: ($errno) $errmsg.";
     $conn->close();
-    header("Location: error.php?m=$error");
-    die();
+    include('includes/footer.php');
+    exit;
 }
+
+
+if ($query->num_rows == 0)
+    echo "Your search <i>'$terms_str'</i> did not match any items in our inventory";
 ?>
+
+
 
 <section class="main-section section-padding">
     <div class="page-navigation">
         <ul>
-            <li class="page-navsli page-nav"><a href="#">Home</a></li>
-            <li class="page-navsli page-nav">></li>
-            <li class="page-navsli page-nav">Search</li>
+            <li class="page-navsli page-nav"><a href="index.php">Home</a></li>
             <li class="page-navsli page-nav">></li>
             <li class="page-navsli page-nav">Search Results</li>
         </ul>
     </div>
-    <div class="result-conent">
-        <div class="heading">
-            Search Results
+    <div class="about-content">
+        <div class="heading product-category">
+            <h2>Search Results for: '<?= $term ?>'</h2>
         </div>
-        <h2>Search Results for: '<?= $term ?>'</h2>
-        <? ?>
-        <div class="product-list">
-            <div class="row header">
-                <div class="col1">Title</div>
-                <div class="col2">Publisher</div>
-                <div class="col3">Price</div>
-                <div class="col4">Platform</div>
+        <div class="product-section">
+            <div class="product-side-bar">
+                <ul class="side-bars">
+                    <li class="single-bar"><a href="" class="bar-link"><span class="bar-text">Price</span><span
+                                class="bar-icon">+</span></a></li>
+                    <li class="single-bar"><a href="" class="bar-link"><span class="bar-text">Platforms</span><span
+                                class="bar-icon">+</span></a></li>
+                    <li class="single-bar"><a href="" class="bar-link"><span class="bar-text">Availability</span><span
+                                class="bar-icon">+</span></a></li>
+                    <li class="single-bar"><a href="" class="bar-link"><span class="bar-text">Product
+                                Type</span><span class="bar-icon">+</span></a></li>
+                    <li class="single-bar"><a href="" class="bar-link"><span class="bar-text">ESRB</span><span
+                                class="bar-icon">+</span></a></li>
+                    <li class="single-bar"><a href="" class="bar-link"><span class="bar-text">Players</span><span
+                                class="bar-icon">+</span></a></li>
+                    <li class="single-bar"><a href="" class="bar-link"><span class="bar-text">Review
+                                Stars</span><span class="bar-icon">+</span></a></li>
+                    <li class="single-bar"><a href="" class="bar-link"><span class="bar-text">Genre</span><span
+                                class="bar-icon">+</span></a></li>
+                    <li class="single-bar"><a href="" class="bar-link"><span class="bar-text">Condition</span><span
+                                class="bar-icon">+</span></a></li>
+                </ul>
             </div>
+            <section class="new container" id="new">
+                <!--Content-->
+                <div class="new-content">
+                    <!--Box 1-->
+
+                    <?php
+                    while ($row = $query->fetch_assoc()) {
+                        echo "<section class='new container' id='new'>";
+                        echo "<div class='class='new-content'>";
+                        echo "<div class='box'>";
+                        echo "<div class='deal-image'>";
+                        echo "<a href='productdetails.php?id=", $row['id'], "'> <img src='$row[image]' /></a>";
+                        echo "<br>";
+                        echo "<div class='box-text'>";
+                        echo "<h2>", $row['title_name'], "</h2>";
+                        echo "<h2>Publisher: ", $row['publisher'], "</h2>";
+                        echo "<h3>", $row['product_category'], "</h3>";
+                        echo "<h3>$", $row['final_price'], "</h3>";
+                        echo "</div>";
+                        echo "<div>";
+                        echo "</div>";
+                        echo "<div class='deal-review'>";
+                        echo "</div>";
+                        echo "</div>";
+                        echo "</div>";
+                        echo "</div>";
+                        echo "</section>";
+                    }
+                    ?>
+                </div>
+
         </div>
-        <?php while ($row = $query->fetch_assoc()) { ?>
-            <div class="row">
-                <div class="col1"><?= $row['title'] ?></div>
-                <div class="col2"><?= $row['publisher'] ?></div>
-                <div class="col3"><?= $row['price'] ?></div>
-                <div class="col4"><?= $row['platform'] ?></div>
-            </div>
-        <?php } ?>
-    </div>
 </section>
+
+
+
+</body>
+
+
+
+<script href="main.js"></script>
 <?php
 require_once('includes/footer.php');
 ?>
