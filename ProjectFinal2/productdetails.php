@@ -50,15 +50,16 @@ if (!$row) {
     <h2><?= $row['title_name'] ?></h2>
 
     <div class="productdetails">
-        <div class="detailimage">
+        <div class="boxdetails">
             <img src="<?php echo $row['image'] ?>" alt="" style="text-align:center; border: solid 3px black;  background-color: white; box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2);
-                transition: 0.5 ease-out;" width="600" />
+                transition: 0.5 ease-out;" width="" />
         </div>
         <div class="column">
             <div style="padding-top: 20px;">Publisher: <?= $row['publisher'] ?></div>
             <div>Release Date: <?= $row['release_date'] ?></div>
-            <div>$<?= $row['final_price'] ?></div>
             <div>Description: <?= $row['description'] ?></div>
+            <div>$<?= $row['final_price'] ?></div>
+
         </div>
 
     </div>
