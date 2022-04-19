@@ -35,7 +35,7 @@
     <section class="social__media">
         <div class="social__media--wrap">
             <div class="footer__logo">
-            <a href="index.php"><img  height= "75px" width = "110px" src="images/retrologo.png"></a>
+                <a href="index.php"><img height="75px" width="110px" src="images/retrologo.png"></a>
             </div>
             <p class="website__rights">Retro Games 2022. All rights reserved <i class="fa-regular fa-copyright"></i></p>
 
@@ -45,4 +45,11 @@
 
 </body>
 
+
 </html>
+<div id="curdate">
+    <?php
+    date_default_timezone_set('America/New_York');
+    echo date("l, F d, Y", time());
+    ?>
+</div>
