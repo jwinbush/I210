@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(session_status() == PHP_SESSION_NONE){
+    session_start();
+}
 
 if(isset($_POST['clear'])){
     unset($_SESSION['cart']);
@@ -10,6 +12,10 @@ if (isset($_SESSION['cart'])) {
     $cartArray = $_SESSION['cart'];
 } else {
     $cartArray = array();
+}
+
+if (isset($_SESSION['FirstName'])){
+    $firstName = $_SESSION['FirstName'];
 }
 ?>
 <!DOCTYPE html>
@@ -75,11 +81,24 @@ if (isset($_SESSION['cart'])) {
                         </div>
                     </div>
                     <div class="dropdown" class="navs">
-                        <li class="dropbtn">Account <i class="fa fa-user"></i></li>
-                        <div class="dropdown-content">
-                            <a href="signin.php">Sign In</a>
-                            <a href="register.php">Create Account</a>
-                        </div>
+
+                        <?php
+                            if (isset($_SESSION["uid"])){
+                                echo '<li class="dropbtn">'. $firstName . '<i class="fa fa-user"></i></li>
+                                <div class="dropdown-content">
+                                <a href="logout.php">Log Out</a>
+                                <a href="edituser.php">Edit User Account</a>
+                                 </div>';
+                            }
+                            else{
+                                echo '<li class="dropbtn">Account <i class="fa fa-user"></i></li>
+                                <div class="dropdown-content">
+                                <a href="signin.php">Sign In</a>
+                                <a href="register.php">Create Account</a>
+                                </div>';
+                            }
+                        ?>
+
                     </div>
                     <!--Cart-->
                     <div class="dropdown" class="navs">

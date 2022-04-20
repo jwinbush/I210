@@ -27,7 +27,7 @@ require_once('includes/header.php');
             <div class="form-groups">
 
                 <div class="input-div">
-                    <input type="text" class="input-field" name="username" placeholder="Username" required value="">
+                    <input type="text" class="input-field" name="email" placeholder="email@example.com" required value="">
                 </div>
             </div>
             <div class="form-groups">
