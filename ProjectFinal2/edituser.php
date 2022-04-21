@@ -1,20 +1,18 @@
 <?php
-$page_title = "Edit user details";
 
-require_once('includes/header.php');
+
 require_once('includes/database.php');
+require_once('includes/header.php');
 
-//retrieve user id from a query string
-if (!filter_has_var(INPUT_GET, 'id')) {
-    echo "Error: user id was not found.";
-    require_once ('includes/footer.php');
-    exit();
-}
-$user_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+?>
+<head>
+    <title>Edit User | Retro Games</title>
+</head>
 
+<?php
 
 //select statement
-$sql = "SELECT * FROM users WHERE user_id=$user_id";
+$sql = "SELECT * FROM users WHERE ID=$uid";
 
 //execute the query
 $query = $conn->query($sql);
@@ -33,46 +31,61 @@ if (!$query) {
 //retrieve results
 $row = $query->fetch_assoc();
 
-//display results in a table
-
 ?>
+<div class="register-content">
+    <div class="register-div">
+        <?php
+        if(isset($_POST['editUser'])){
 
-    <h2>Edit User Details</h2>
+            $firstName = $_POST['firstName'];
 
-    <form name="edituser" action="updateuser.php" method="get">
+            $lastName = $_POST['lastName'];
+
+            $email = $_POST['email'];
+
+            $birthday = date('Y-m-d', $_POST['date']);
+
+
+
+
+
+
+            $sql = "UPDATE users SET FirstName = '$firstName', LastName = '$lastName', Email ='$email', Birthday = '$birthday' WHERE ID = $uid";
+            $query = $conn->query($sql);
+
+            echo '<h2 style="color: #0ca845;">Account Successfully Updated.</h2>';
+
+        }
+
+        ?>
+        <div class="register-heading">
+            <h2>Edit User Details</h2>
+        </div>
+    <form action="edituser.php" method="post">
         <table class="userdetails">
             <tr>
-                <th>User ID</th>
-                <td><input name="user_id" value="<?php echo $row['user_id'] ?>" readonly="readonly" /></td>
+                <th>First Name:   </th>
+                <td><input name="firstName" value="<?php echo $row['FirstName'] ?>" size="30" required /></td>
             </tr>
             <tr>
-                <th>Username</th>
-                <td><input name="user_name" value="<?php echo $row['user_name'] ?>" size="30" required /></td>
+                <th>Last Name:   </th>
+                <td><input name="lastName" value="<?php echo $row['LastName'] ?>" size="30" required /></td>
             </tr>
             <tr>
-                <th>Full Name</th>
-                <td><input name="full_name" value="<?php echo $row['full_name'] ?>" size="30" required /></td>
+                <th>Email:   </th>
+                <td><input type="email" name="email" value="<?php echo $row['Email'] ?>" size="40" required /></td>
             </tr>
             <tr>
-                <th>Email Address</th>
-                <td><input type="email" name="user_email" value="<?php echo $row['user_email'] ?>" size="40" required /></td>
-            </tr>
-            <tr>
-                <th>Birthdate</th>
-                <td><input type="date" name="birthdate" value="<?php echo $row['birthdate'] ?>" required /></td>
+                <th>Birthday:   </th>
+                <td> <input type="date" class="input-field" name="birthday" required><?php print $_POST["birthday"]; ?></td>
             </tr>
         </table>
         <br>
-        <input type="submit" value="Update">&nbsp;&nbsp;
-        <input type="button" onclick="window.location.href='userdetails.php?id=<?php echo
-        $row['user_id'] ?>'" value="Cancel">
+        <button class="submit-button" type="submit" value="Update" name="editUser">Update</button>
     </form>
+    </div>
+</div>
 <?php
-// clean up result sets when we're done with them!
-$query->close();
-
-// close the connection.
-$conn->close();
 
 //include the footer
 require_once('includes/footer.php');

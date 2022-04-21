@@ -80,6 +80,11 @@ if (isset($_SESSION['uid'])) {
                     </div>
                     <!--Navigation Dropdowns-->
                     <li class="navs"><a href="index.php">Home</a></li>
+                    <?php
+                        if ($isAdmin == 1){
+                            echo '<li class="navs"><a href="addproduct.php">Add a Product</a></li>';
+                        }
+                    ?>
                     <div class="dropdown" class="navs">
                         <li class="dropbtn">Products </li>
                         <div class="dropdown-content">
@@ -106,8 +111,11 @@ if (isset($_SESSION['uid'])) {
                                 echo '<li class="dropbtn">'. $firstName . '<i class="fa fa-user"></i></li>
                                 <div class="dropdown-content">
                                 <a href="logout.php">Log Out</a>
-                                <a href="edituser.php">Edit User Account</a>
-                                 </div>';
+                                <a href="edituser.php">Edit User Account</a>';
+                                if($isAdmin == 1){
+                                    echo ' <a href="createAdmin.php">Create an Admin Account</a>';
+                                }
+                                 echo '</div>';
                             }
                             else{
                                 echo '<li class="dropbtn">Account <i class="fa fa-user"></i></li>
