@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 19, 2022 at 07:36 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.1
+-- Host: localhost:3307
+-- Generation Time: Apr 21, 2022 at 04:27 AM
+-- Server version: 5.7.24
+-- PHP Version: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `retrogametwo`
 --
+CREATE DATABASE IF NOT EXISTS `retrogametwo` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `retrogametwo`;
 
 -- --------------------------------------------------------
 
@@ -27,6 +29,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `categories`
 --
 
+DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
   `category_id` int(11) NOT NULL,
   `category` varchar(100) NOT NULL
@@ -48,10 +51,11 @@ INSERT INTO `categories` (`category_id`, `category`) VALUES
 -- Table structure for table `products`
 --
 
+DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `title_name` varchar(120) NOT NULL,
-  `description` text DEFAULT NULL,
+  `description` text,
   `release_date` date NOT NULL,
   `first_price` decimal(5,2) NOT NULL,
   `final_price` decimal(5,2) NOT NULL,
@@ -107,6 +111,7 @@ INSERT INTO `products` (`id`, `title_name`, `description`, `release_date`, `firs
 -- Table structure for table `publisher`
 --
 
+DROP TABLE IF EXISTS `publisher`;
 CREATE TABLE `publisher` (
   `publisher_id` int(11) NOT NULL,
   `publisher` varchar(100) NOT NULL
@@ -135,6 +140,7 @@ INSERT INTO `publisher` (`publisher_id`, `publisher`) VALUES
 -- Table structure for table `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `ID` int(11) NOT NULL,
   `UserName` varchar(100) NOT NULL,
@@ -144,10 +150,10 @@ CREATE TABLE `users` (
   `Password` varchar(100) NOT NULL,
   `Admin` varchar(100) NOT NULL,
   `Birthday` date NOT NULL,
-  `Address` varchar(100) NOT NULL,
-  `Zip` varchar(100) NOT NULL,
-  `State` varchar(100) NOT NULL,
-  `Country` varchar(100) NOT NULL
+  `Address` varchar(100) DEFAULT NULL,
+  `Zip` varchar(100) DEFAULT NULL,
+  `State` varchar(100) DEFAULT NULL,
+  `Country` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -155,10 +161,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID`, `UserName`, `FirstName`, `LastName`, `Email`, `Password`, `Admin`, `Birthday`, `Address`, `Zip`, `State`, `Country`) VALUES
-(1, 'coolm', 'Matt', 'Cool', 'coolm@iu.edu', 'retroAdmin', 'Yes', '2001-06-18', '1234 Test Ln', '46228', 'IN', 'United States'),
-(2, 'jwinbush', 'Jawon', 'Winbush', 'jwinbush@iu.edu', '333', 'Yes', '2001-05-08', '991 Untrue Dr', '46202', 'IN', 'United States'),
-(3, 'cdegraf', 'Charles', 'Degraff', 'cdegraf@iu.edu', '111', 'Yes', '1982-07-10', '112 No Way', '46383', 'IN', 'United States'),
-(4, 'aminardo', 'Anthony', 'Minardo', 'aminardo@iu.edu', '222', 'Yes', '1989-03-13', '606 Notan Ave', '46540', 'IN', 'United States');
+(1, 'coolm', 'Matt', 'Cool', 'coolm@iu.edu', 'retroAdmin', '1', '2001-06-18', '1234 Test Ln', '46228', 'IN', 'United States'),
+(2, 'jwinbush', 'Jawon', 'Winbush', 'jwinbush@iu.edu', '333', '1', '2001-05-08', '991 Untrue Dr', '46202', 'IN', 'United States'),
+(3, 'cdegraf', 'Charles', 'Degraff', 'cdegraf@iu.edu', '111', '1', '1982-07-10', '112 No Way', '46383', 'IN', 'United States'),
+(4, 'aminardo', 'Anthony', 'Minardo', 'aminardo@iu.edu', '222', '1', '1989-03-13', '606 Notan Ave', '46540', 'IN', 'United States'),
+(11, 'coolm4816@gmail.com', 'Matt', 'Cool', 'coolm4816@gmail.com', 'coolm', '0', '2022-04-20', NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -196,7 +203,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -208,13 +215,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `publisher`
 --
 ALTER TABLE `publisher`
-  MODIFY `publisher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `publisher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
