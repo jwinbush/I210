@@ -13,7 +13,7 @@ if(isset($_POST['create'])){
     $description = $_POST['description'];
     $final_price = $_POST['final_price'];
     $first_price = $_POST['final_price'];
-    $image = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shopify.com%2Fpartners%2Fblog%2Fplaceholder-images&psig=AOvVaw1PNEuEuyL9cT17JIHKE1J7&ust=1650661977971000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCNCL75mJpvcCFQAAAAAdAAAAABAD";
+    $image = "https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg";
     $category_id = 1;
     $deal_id = 1;
     $product_category = $_POST['product_category'];
@@ -34,9 +34,7 @@ if(isset($_POST['create'])){
         <ul>
             <li class="page-navsli page-nav"><a href="index.php">Home</a></li>
             <li class="page-navsli page-nav">></li>
-            <li class="page-navsli page-nav"><a href="products.php">Products</a></li>
-            <li class="page-navsli page-nav">></li>
-            <li class="page-navsli page-nav">Product Details</li>
+            <li class="page-navsli page-nav">Add Product</li>
         </ul>
     </div>
     <form action="addproduct.php" method="post">

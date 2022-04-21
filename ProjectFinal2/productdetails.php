@@ -68,7 +68,7 @@ if(isset($_GET['edit'])){
 
     <div class="productdetails">
         <div class="boxdetails">
-            <img src="<?php echo $row['image'] ?>" alt="" style="text-align:center; border: solid 3px black; width: 350px; height: 376px; background-color: white; box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2);
+            <img src="<?php echo $row['image'] ?>" alt="<?php echo $row['title_name'] . " image";?>" style="text-align:center; border: solid 3px black; width: 350px; height: 376px; background-color: white; box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2);
                 transition: 0.5 ease-out;" width="" />
         </div>
         <div class="column" color="black";>
