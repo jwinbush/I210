@@ -1,6 +1,21 @@
 <?php
 require_once('includes/database.php');
 require_once('includes/header.php');
+
+if(isset($_POST['signin'])){
+
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $sql = "SELECT * FROM users WHERE Email = '$email' AND Password = '$password'";
+
+    $query = $conn->query($sql);
+    $row = $query->fetch_assoc();
+
+    $_SESSION['uid'] = $row['ID'];
+    $_SESSION['FirstName'] = $row['FirstName'];
+
+    header('location: index.php');
+}
 ?>
 
 <head>
@@ -23,7 +38,7 @@ require_once('includes/header.php');
                 Sign in now to redeem your rewards!
             </div>
         </div>
-        <form>
+        <form action="signin.php" method="post">
             <div class="form-groups">
 
                 <div class="input-div">
@@ -35,7 +50,7 @@ require_once('includes/header.php');
                     <input type="password" class="input-field" name="password" placeholder="Password" required value="">
                 </div>
                 <div class="input-div">
-                    <button type="submit" name="submit" class=" submit-button">Sign in</button>
+                    <button type="submit" name="signin" class=" submit-button">Sign in</button>
 
                 </div>
             </div>

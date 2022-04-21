@@ -29,7 +29,7 @@ if (isset($_SESSION['uid'])) {
     if($row['Admin'] == "1") {
        $isAdmin = 1;
     }
-print_r($isAdmin);
+
 
 ?>
 <!DOCTYPE html>

@@ -36,7 +36,9 @@ if (!$row) {
 }
 
 
-
+if(isset($_GET['edit'])){
+    header("location: editproduct.php?id=$id");
+}
 ?>
 
 <section class="main-section section-padding">
@@ -66,10 +68,10 @@ if (!$row) {
 
     <div class="productdetails">
         <div class="boxdetails">
-            <img src="<?php echo $row['image'] ?>" alt="" style="text-align:center; border: solid 3px black;  background-color: white; box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2);
+            <img src="<?php echo $row['image'] ?>" alt="" style="text-align:center; border: solid 3px black; width: 350px; height: 376px; background-color: white; box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2);
                 transition: 0.5 ease-out;" width="" />
         </div>
-        <div class="column">
+        <div class="column" color="black";>
             <div style="padding-top: 20px;">Publisher: <?= $row['publisher'] ?></div>
             <div>Release Date: <?= $row['release_date'] ?></div>
             <div>Description: <?= $row['description'] ?></div>
@@ -79,25 +81,19 @@ if (!$row) {
 
     </div>
 
-    <?php
-    /*
-    $confirm = "";
-    if (isset($_GET['m'])) {
-        if ($_GET['m'] == "insert") {
-            $confirm = "You have successfully added the new item.";
-        }
-    } else if ($_GET['m'] == "update") {
-        $confirm = "Your item has been successfully updated.";
-    }
-    */
-    ?>
-
-
     <form action="productDetails.php" method="get">
         <input type="hidden" name="id" value="<?php print $row['id'];?>">
         <div class="deal-button">
             <button type="submit" value="Add" class="site-button" name="cart">Add to Cart</button>
         </div>
+        <?php
+        if($isAdmin == 1) {
+            echo
+            '<div class="deal-button">
+            <button type="submit" value="Edit" class="site-button" name="edit">Edit Product</button>
+        </div>';
+        }
+        ?>
     </form>
 
 
