@@ -2,7 +2,10 @@
 require_once('includes/database.php');
 require_once('includes/header.php');
 ?>
-<head><title>Retro Video Game Store: About us | Retro Games</title></head>
+
+<head>
+    <title>Retro Video Game Store: About us | Retro Games</title>
+</head>
 <section class="main-section section-padding">
     <div class="page-navigation">
         <ul>
@@ -13,13 +16,72 @@ require_once('includes/header.php');
     </div>
     <div class="about-content">
         <div class="heading">
-            About Us
+            <h2>Our Team</h2>
         </div>
-        <div class="about-text">
-            Starting back in 2010, we created Retro Games to combat the lack of reliable options for classic gaming. We struggled to find other sites, stores, and people that shared our love for the classics, so we created our own! We strive to give the best customer experience and to share our knowledge of classic gaming with <i>you!</i>     From original board games, video games, collectibles, memorabilia, or to even one-of-a-kind table-top games, we hope that you will find everything you're looking for here with us! Reach out to us with any questions or concerns and we'll get back to you within 24 business hours.
+        <div>
+            <table style="margin-left: 20%;">
+                <tr>
+                    <td>
+                        <div class="columnabout">
+                            <div class="card">
+                                <img src="https://static.vecteezy.com/system/resources/thumbnails/000/550/980/small_2x/user_icon_001.jpg"
+                                    alt="Charles">
+                                <div class="container">
+                                    <h1>Charles</h1>
+                                    <p class="title">Developer</p>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="columnabout">
+                            <div class="card">
+                                <img src="https://static.vecteezy.com/system/resources/thumbnails/000/550/980/small_2x/user_icon_001.jpg"
+                                    alt="Matt">
+                                <div class="container">
+                                    <h1>Matt</h1>
+                                    <p class="title">Developer</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="columnabout">
+                            <div class="card">
+                                <img src="https://static.vecteezy.com/system/resources/thumbnails/000/550/980/small_2x/user_icon_001.jpg"
+                                    alt="Jawon">
+                                <div class="container">
+                                    <h1>Jawon</h1>
+                                    <p class="title">Developer</p>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="columnabout">
+                            <div class="card">
+                                <img src="https://static.vecteezy.com/system/resources/thumbnails/000/550/980/small_2x/user_icon_001.jpg"
+                                    alt="Anthony">
+                                <div class="container">
+                                    <h1>Anthony</h1>
+                                    <p class="title">Developer</p>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
         </div>
-        <div class="about-image">
-            <img src="images/about01.jpg" width="75%"> </div>
     </div>
 </section>
 <?php 
