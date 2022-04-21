@@ -70,7 +70,7 @@ if (!$row) {
                         echo "<div class='class='new-content'>";
                         echo "<div class='box'>";
                         echo "<div class='deal-image'>";
-                        echo "<a href='productdetails.php?id=", $row['id'], "'> <img src='$row[image]' /></a>";
+                        echo "<a href='productdetails.php?id=", $row['id'], "'> <img src='$row[image]' width='314px' height='351px'/></a>";
                         echo "<br>";
                         echo "<div class='box-text'>";
                         echo "<h2>", $row['title_name'], "</h2>";
