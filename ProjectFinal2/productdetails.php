@@ -39,6 +39,12 @@ if (!$row) {
 if(isset($_GET['edit'])){
     header("location: editproduct.php?id=$id");
 }
+
+if(isset($_GET['delete'])){
+    $sql = "DELETE FROM products WHERE id = $id";
+    $query = $conn->query($sql);
+    header('location:products.php');
+}
 ?>
 
 <section class="main-section section-padding">
@@ -91,7 +97,10 @@ if(isset($_GET['edit'])){
             echo
             '<div class="deal-button">
             <button type="submit" value="Edit" class="site-button" name="edit">Edit Product</button>
-        </div>';
+            </div>';
+            echo '<div class="deal-button">
+            <button type="submit" value="Edit" class="site-button" name="delete">Delete Product</button>
+            </div>';
         }
         ?>
     </form>
