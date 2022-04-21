@@ -1,6 +1,6 @@
 <?php
 
-$host = "localhost:3307";
+$host = "localhost";
 $login = "phpuser";
 $password = "phpuser";
 $database = "retrogametwo";
