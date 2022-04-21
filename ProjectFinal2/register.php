@@ -42,7 +42,7 @@ if(isset($_POST['register'])){
         $_SESSION['uid'] = $row['ID'];
         $_SESSION['FirstName'] = $row['FirstName'];
 
-        //header('location:index.php');
+        header('location:index.php');
 
     }
 }

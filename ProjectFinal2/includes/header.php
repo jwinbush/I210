@@ -1,4 +1,5 @@
 <?php
+require_once('includes/database.php');
 if(session_status() == PHP_SESSION_NONE){
     session_start();
 }
@@ -17,6 +18,19 @@ if (isset($_SESSION['cart'])) {
 if (isset($_SESSION['FirstName'])){
     $firstName = $_SESSION['FirstName'];
 }
+
+
+if (isset($_SESSION['uid'])) {
+    $uid = $_SESSION['uid'];
+    $sql = "SELECT * FROM users WHERE ID = $uid";
+    $query = $conn->query($sql);
+    $row = $query->fetch_assoc();
+}
+    if($row['Admin'] == "1") {
+       $isAdmin = 1;
+    }
+print_r($isAdmin);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,6 +60,11 @@ if (isset($_SESSION['FirstName'])){
 </head>
 
 <body>
+    <?php
+        if($isAdmin == 1){
+            include 'includes/adminBanner.php';
+        }
+    ?>
     <div id="heading">
         <!--Free shipping-->
         <p class=" welcome"><a href="register.php"><i class="fa-solid fa-truck-fast"></i> FREE STANDARD SHIPPING &
