@@ -30,6 +30,18 @@ if (isset($_SESSION['uid'])) {
        $isAdmin = 1;
     }
 
+//variables for a user's login, name, and role
+$login = ' ';
+    $name = ' ';
+    $role = 0;
+
+    //if the use has logged in, retrieve login, name, and role.
+if (isset($_SESSION['login']) AND isset($_SESSION['name']) AND
+isset($_SESSION['role'])) {
+    $login = $_SESSION['login'];
+    $name = $_SESSION['name'];
+    $role = $_SESSION['role'];
+}
 
 ?>
 <!DOCTYPE html>
