@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Apr 21, 2022 at 04:27 AM
+-- Generation Time: Apr 27, 2022 at 12:17 AM
 -- Server version: 5.7.24
 -- PHP Version: 8.0.1
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `retrogametwo`
 --
-CREATE DATABASE IF NOT EXISTS `retrogametwo` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `retrogametwo`;
 
 -- --------------------------------------------------------
 
@@ -29,7 +27,6 @@ USE `retrogametwo`;
 -- Table structure for table `categories`
 --
 
-DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
   `category_id` int(11) NOT NULL,
   `category` varchar(100) NOT NULL
@@ -51,7 +48,6 @@ INSERT INTO `categories` (`category_id`, `category`) VALUES
 -- Table structure for table `products`
 --
 
-DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `title_name` varchar(120) NOT NULL,
@@ -98,7 +94,7 @@ INSERT INTO `products` (`id`, `title_name`, `description`, `release_date`, `firs
 (25, 'Mario Party', 'Mario Party is a party video game developed by Hudson Soft and published by Nintendo for the Nintendo 64 game console.', '1998-12-18', '29.99', '19.99', 'https://upload.wikimedia.org/wikipedia/en/c/cd/Marioparty1.jpg', 1, 1, 'Video Game', 'Nintendo', 1),
 (26, 'Xbox Game System', 'The Xbox is a video game system developed and published by Microsoft in 2001.', '2001-11-15', '264.99', '219.99', 'http://s3.amazonaws.com/digitaltrends-uploads-prod/2015/04/original-xbox.png', 2, 1, 'Console', 'Microsoft', 11),
 (27, 'Superman Action Figure', 'Authentic vintage Superman 12in action figure first released in 1978 following the movies.', '1978-12-15', '29.99', '29.99', 'https://m.media-amazon.com/images/I/61ZO7Wk6PIL._AC_SX425_.jpg', 4, 0, 'Collectible', 'Mego', 0),
-(28, 'Crash Bandicoot', 'Crash Bandicoot is a 1996 platform video game developed by Naughty Dog and the first game in the Crash Bandicoot series.', '1996-09-09', '29.99', '29.99', 'https://m.media-amazon.com/images/M/MV5BYmJlY2RlYjEtNWU3Yy00YTRlLTllMzUtZmYwY2NkMzgxZmFmXkEyXkFqcGdeQXVyNjM2NTM3ODA@._V1_.jpg', 1, 0, 'Video Game', 'Sony', 2),
+(28, 'Crash Bandicoot', 'Crash Bandicoot is a 1996 platform video game developed by Naughty Dog and published by Sony Computer Entertainment for the PlayStation.', '1996-09-09', '29.99', '29.99', 'https://m.media-amazon.com/images/M/MV5BYmJlY2RlYjEtNWU3Yy00YTRlLTllMzUtZmYwY2NkMzgxZmFmXkEyXkFqcGdeQXVyNjM2NTM3ODA@._V1_.jpg', 1, 0, 'Video Game', 'Nintendo', 2),
 (29, 'Crash Bandicoot 2: Cortex Strikes Back', 'Crash Bandicoot 2: Cortex Strikes Back is a 1997 platform video game developed by Naughty Dog and the second game in the Crash Bandicoot series.', '1997-10-31', '29.99', '24.99', 'https://upload.wikimedia.org/wikipedia/en/e/e6/Crash_Bandicoot_2_Cortex_Strikes_Back_Game_Cover.jpg', 1, 1, 'Video Game', 'Sony', 2),
 (30, 'NBA 2K1', 'NBA 2K1 is a 2000 sports video game developed by Visual Concepts and published by Sega. It was the first NBA 2K game to feature online multiplayer and the first game to feature street courses instead of playing a game inside the arena in the first game, famous street courts such as The Cage, Rucker Park, Franklin Park, and Goat Park.', '2000-10-31', '29.99', '29.99', 'https://upload.wikimedia.org/wikipedia/en/7/79/NBA_2K1_Cover.jpg', 1, 0, 'Video Game', 'Sega', 3),
 (31, 'Sonic & Knuckles', 'Sonic & Knuckles is a platform game developed by Sonic Team and published by Sega for the Sega Genesis home video game console. The fourth game in the Sonic the Hedgehog franchise.', '1991-06-23', '29.99', '29.99', 'https://m.media-amazon.com/images/I/51JV6YK81FL.jpg', 1, 0, 'Video Game', 'Sega', 3),
@@ -111,7 +107,6 @@ INSERT INTO `products` (`id`, `title_name`, `description`, `release_date`, `firs
 -- Table structure for table `publisher`
 --
 
-DROP TABLE IF EXISTS `publisher`;
 CREATE TABLE `publisher` (
   `publisher_id` int(11) NOT NULL,
   `publisher` varchar(100) NOT NULL
@@ -140,7 +135,6 @@ INSERT INTO `publisher` (`publisher_id`, `publisher`) VALUES
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `ID` int(11) NOT NULL,
   `UserName` varchar(100) NOT NULL,
@@ -161,11 +155,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID`, `UserName`, `FirstName`, `LastName`, `Email`, `Password`, `Admin`, `Birthday`, `Address`, `Zip`, `State`, `Country`) VALUES
-(1, 'coolm', 'Matt', 'Cool', 'coolm@iu.edu', 'retroAdmin', '1', '2001-06-18', '1234 Test Ln', '46228', 'IN', 'United States'),
+(1, 'coolm', 'Jim', 'Cool', 'coolm@iu.edu', 'retroAdmin', '1', '2022-04-26', '1234 Test Ln', '46228', 'IN', 'United States'),
 (2, 'jwinbush', 'Jawon', 'Winbush', 'jwinbush@iu.edu', '333', '1', '2001-05-08', '991 Untrue Dr', '46202', 'IN', 'United States'),
 (3, 'cdegraf', 'Charles', 'Degraff', 'cdegraf@iu.edu', '111', '1', '1982-07-10', '112 No Way', '46383', 'IN', 'United States'),
 (4, 'aminardo', 'Anthony', 'Minardo', 'aminardo@iu.edu', '222', '1', '1989-03-13', '606 Notan Ave', '46540', 'IN', 'United States'),
-(11, 'coolm4816@gmail.com', 'Matt', 'Cool', 'coolm4816@gmail.com', 'coolm', '0', '2022-04-20', NULL, NULL, NULL, NULL);
+(11, 'coolm4816@gmail.com', 'Matthew', 'Cool', 'coolm4816@gmail.com', 'coolm', '0', '2022-04-21', NULL, NULL, NULL, NULL),
+(12, 'mcool@iu.edu', 'Tim', 'Smith', 'mcool@iu.edu', 'coolm', '0', '2022-04-26', NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -209,7 +204,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `publisher`
@@ -221,7 +216,7 @@ ALTER TABLE `publisher`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
