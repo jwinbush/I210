@@ -1,5 +1,5 @@
 <?php
-require_once('includes/database.php');
+require_once('database.php');
 if(session_status() == PHP_SESSION_NONE){
     session_start();
 }
